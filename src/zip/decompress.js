@@ -22,7 +22,6 @@ const decompress = async () => {
 
     const gunzipStream = zlib.createGunzip();
 
-    // Используем pipeline для удобного соединения потоков
     await pipeline(readStream, gunzipStream, writeStream, (error) => {
       if (error) {
         console.error("Decompression failed:", error);

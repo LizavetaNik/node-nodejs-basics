@@ -15,7 +15,9 @@ const create = async () => {
       throw new Error("FS operation failed: File already exists");
     } catch (error) {
       if (error.code === "ENOENT") {
-        await fsPromises.writeFile(filePath, "I am fresh and young");
+        await fsPromises.writeFile(filePath, "I am fresh and young", {
+          flag: "wx",
+        });
         console.log("File created successfully: fresh.txt");
       } else {
         throw error;

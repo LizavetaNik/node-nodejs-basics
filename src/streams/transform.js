@@ -3,9 +3,10 @@ import { Transform } from "stream";
 const transform = async () => {
   try {
     const reverseTransform = new Transform({
-      transform(chunk, encoding, callback) {
-        this.push(chunk.toString().split("").reverse().join(""));
-        callback();
+      transform(chunk, _, callback) {
+        const stringForTransform = chunk.toString().trim();
+        const reversedString = stringForTransform.split("").reverse().join("");
+        callback(null, reversedString + "\n");
       },
     });
 

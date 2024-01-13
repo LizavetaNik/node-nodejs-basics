@@ -25,7 +25,11 @@ const copy = async () => {
         for (const file of files) {
           const sourceFilePath = join(sourceFolderPath, file);
           const destinationFilePath = join(destinationFolderPath, file);
-          await fsPromises.copyFile(sourceFilePath, destinationFilePath);
+          await fsPromises.copyFile(sourceFilePath, destinationFilePath, {
+            recursive: true,
+            force: false,
+            errorOnExist: true,
+          });
         }
 
         console.log("Files copied successfully.");

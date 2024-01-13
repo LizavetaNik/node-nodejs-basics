@@ -7,10 +7,10 @@ const __dirname = dirname(__filename);
 
 const remove = async () => {
   try {
-    const filePath = join(__dirname, "files", "fileToRemove.txt");
+    const filePathToRemove = join(__dirname, "files", "fileToRemove.txt");
 
     try {
-      await fsPromises.access(filePath, constants.F_OK);
+      await fsPromises.access(filePathToRemove, constants.F_OK);
     } catch (error) {
       if (error.code === "ENOENT") {
         throw new Error("FS operation failed: File does not exist");
@@ -19,7 +19,7 @@ const remove = async () => {
       }
     }
 
-    await fsPromises.unlink(filePath);
+    await fsPromises.unlink(filePathToRemove);
     console.log("File removed successfully.");
   } catch (err) {
     console.error(err.message);
