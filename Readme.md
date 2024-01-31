@@ -1,6 +1,6 @@
 # Node.js basics
 
-## Completed Subtasks
+## Score 206/206
 
 ### File system (src/fs)
 create.js - implement function that creates new file fresh.txt with content I am fresh and young inside of the files folder (if file already exists Error with message FS operation failed must be thrown)
